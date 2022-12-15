@@ -2,11 +2,12 @@ import { Router } from 'express';
 import {} from './../controller/records';
 
 import { RecordsController } from './../controller/records';
+import { AdminsController } from '../controller/admins';
 
 const router =  Router();
 
 router.get('/records', RecordsController.getAllValidation, RecordsController.getAll);
-router.get('/admin');
+router.get('/admin', AdminsController.createValidation, AdminsController.create);
 router.get('/records/:id', RecordsController.getByIdValidation, RecordsController.getById);
 router.get('/admin/:id');
 router.post('/records', RecordsController.createValidation, RecordsController.create);
