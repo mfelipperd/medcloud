@@ -7,14 +7,14 @@ import { AdminsController } from '../controller/admins';
 const router =  Router();
 
 router.get('/records', RecordsController.getAllValidation, RecordsController.getAll);
-router.get('/admin', AdminsController.createValidation, AdminsController.create);
+router.get('/admins', );
 router.get('/records/:id', RecordsController.getByIdValidation, RecordsController.getById);
-router.get('/admin/:id');
+router.get('/admins/:id');
 router.post('/records', RecordsController.createValidation, RecordsController.create);
-router.post('/admin');
+router.post('/admins', AdminsController.createValidation, AdminsController.create);
 router.put('/records/:id', RecordsController.updateValidation, RecordsController.updateRecord);
-router.put('/admin/:id');
+router.put('/admins/:id', AdminsController.updateValidation, AdminsController.updateAdmin);
 router.delete('/records/:id', RecordsController.deleteValidation, RecordsController.deleteRecord);
-router.delete('/admin/:id');
+router.delete('/admins/:id');
 
 export { router };

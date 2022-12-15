@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import * as yup from 'yup';
-import { RecordsService } from '../../service';
+import { AdminsService } from '../../service';
+
 
 import { validation } from '../../shared/middleware';
 
@@ -23,10 +24,11 @@ export const createValidation = validation((getSchema) => ({
     }))
 }));
 
+
 export const create =  async (req: Request<{}, {}, IAdmin>, res: Response) => {
     const data =  req.body;
-    const createData = 'await AdminsService.create(data)'; 
-    if(!createData || createData === null) return res.status(StatusCodes.BAD_REQUEST).json({message:'Record not created'});
+    const createData = await AdminsService.create(data); 
+    if(!createData || createData === null) return res.status(StatusCodes.BAD_REQUEST).json({message:'Username already exists!'});
 
     return res.status(StatusCodes.ACCEPTED).json(createData);
 };
