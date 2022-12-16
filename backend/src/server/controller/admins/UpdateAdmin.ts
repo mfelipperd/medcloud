@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import * as yup from 'yup';
+import { AdminsModel } from '../../model';
 
 import { validation } from '../../shared/middleware';
 import { IAdmin } from './Create';
@@ -27,7 +28,8 @@ export const updateAdmin = async (req: Request<IParamProps>, res: Response) => {
     if(!id) return res.status(StatusCodes.BAD_REQUEST).json({ message: 'ID is necessary!'});
     const data = req.body;
     if(!data) return res.status(StatusCodes.BAD_REQUEST).json({ message: 'Data is necessary'});
-    const record = 'await Model.updateById(id, data)';
+    const record = await AdminsModel.updateById(id, data);
+    if (!record) return res.status(StatusCodes.BAD_REQUEST).json({ message: 'ID or Data are invaled'});
 
     return res.status(StatusCodes.ACCEPTED).json(record);
 };
