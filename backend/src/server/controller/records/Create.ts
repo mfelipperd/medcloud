@@ -8,7 +8,7 @@ export interface IRecord {
     name: string;
     email: string;
     adress: string;
-    birthDate: string;
+    birthDate: Date;
 }
 
 
@@ -17,7 +17,7 @@ export const createValidation =  validation((getSchema) => ({
         name: yup.string().required().min(3),
         email: yup.string().required().email(),
         adress: yup.string().required().min(15),
-        birthDate: yup.string().required().min(8),
+        birthDate: yup.date().required(),
     }))
 }));
 

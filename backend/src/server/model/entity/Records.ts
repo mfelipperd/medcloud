@@ -12,8 +12,8 @@ export class Record extends BaseEntity{
         email: string;
     @Column()
         adress: string;
-    @Column()
-        birthDate: string;
+    @Column({ type: 'timestamptz' })
+        birthDate: Date;
     @CreateDateColumn()
         createdAt: Date;
 }

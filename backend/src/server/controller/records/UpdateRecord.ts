@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import * as yup from 'yup';
-import { RecordsModel } from '../../model';
 import { RecordsService } from '../../service';
 
 import { validation } from '../../shared/middleware';
@@ -19,7 +18,7 @@ export const updateValidation =  validation((getSchema) => ({
         name: yup.string().required().min(3),
         email: yup.string().required().email(),
         adress: yup.string().required().min(15),
-        birthDate: yup.string().required().min(8),
+        birthDate: yup.date().required().min(8),
     })),
 }));
 
