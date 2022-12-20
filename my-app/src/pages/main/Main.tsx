@@ -150,6 +150,9 @@ function Main() {
 	return (
 		<Container maxWidth='lg' style={{display: 'flex', justifyContent: 'center', height: '100vh', flexDirection: 'column', alignItems: 'center'}}>
 			<div>
+				<>Cadastros de Pacientes</>
+			</div>
+			<div>
 				<TextField
 					error={emptyName}
 					id='outlined-name'
