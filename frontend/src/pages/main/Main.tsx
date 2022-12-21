@@ -4,7 +4,7 @@
 import React, {useEffect, useState} from 'react';
 import {DataGrid, type GridColDef, type GridRowsProp, type GridEventListener} from '@mui/x-data-grid';
 import api from '../../api';
-import {Button, Container, Stack, TextField} from '@mui/material';
+import {Button, Container, Stack, TextField, colors} from '@mui/material';
 import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {DesktopDatePicker} from '@mui/x-date-pickers';
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
@@ -66,7 +66,6 @@ function Main() {
 		}
 	};
 
-	console.log(selectedRow?.id);
 	const handleChange = (newValue: Dayjs | undefined) => {
 		setValue(newValue);
 		const res = value?.toDate();
@@ -149,10 +148,10 @@ function Main() {
 
 	return (
 		<Container maxWidth='lg' style={{display: 'flex', justifyContent: 'center', height: '100vh', flexDirection: 'column', alignItems: 'center'}}>
-			<div>
-				<>Cadastros de Pacientes</>
+			<div style={{color: '#1976d2'}}>
+				<h1 style={{fontSize: 40}}>CADASTRO DE PACIENTES</h1>
 			</div>
-			<div>
+			<div style={{marginTop: 40}}>
 				<TextField
 					error={emptyName}
 					id='outlined-name'
