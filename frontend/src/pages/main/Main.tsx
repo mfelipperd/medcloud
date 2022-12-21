@@ -212,7 +212,7 @@ function Main() {
 				</div>
 				<div style={{height: 350, width: 975, marginTop: 30}}>
 					<DataGrid rows={rows} columns={columns} onRowClick={handleRowClick} />
-					<Stack direction='row' justifyContent='center' alignItems='center' spacing={2}>
+					<Stack direction='row' justifyContent='center' alignItems='center' spacing={2} marginTop={5}>
 						<Button variant='contained' size='large' onClick={create}> Cadastrar </Button>
 						<Button variant='contained' disabled={isDisabled} size='large' onClick={update}> Editar </Button>
 						<Button variant='contained' disabled={isDisabled} size='large' onClick={deleteRow}type='submit' > Deletar </Button >
