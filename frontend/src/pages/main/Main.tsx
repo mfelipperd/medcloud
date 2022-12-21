@@ -4,7 +4,7 @@
 import React, {useEffect, useState} from 'react';
 import {DataGrid, type GridColDef, type GridRowsProp, type GridEventListener} from '@mui/x-data-grid';
 import api from '../../api';
-import {Button, Container, Stack, TextField, colors} from '@mui/material';
+import {Button, Container, Paper, Stack, TextField, colors} from '@mui/material';
 import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {DesktopDatePicker} from '@mui/x-date-pickers';
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
@@ -147,76 +147,80 @@ function Main() {
 	};
 
 	return (
-		<Container maxWidth='lg' style={{display: 'flex', justifyContent: 'center', height: '100vh', flexDirection: 'column', alignItems: 'center'}}>
-			<div style={{color: '#1976d2'}}>
-				<h1 style={{fontSize: 40}}>CADASTRO DE PACIENTES</h1>
-			</div>
-			<div style={{marginTop: 40}}>
-				<TextField
-					error={emptyName}
-					id='outlined-name'
-					label='Name'
-					value={name}
-					onChange={e => {
-						if (name) {
-							setEmpytName(false);
-						}
+		<Container maxWidth='xl' style={{display: 'flex', justifyContent: 'center', height: '100vh', flexDirection: 'column', alignItems: 'center'}}>
+			<Paper elevation={3}>
 
-						setName(e.target.value);
-					}}
-				/>
-				<TextField
-					error={emptyEmail}
-					id='outlined-name'
-					label='Email'
-					value={email}
-					onChange={e => {
-						if (email) {
-							setEmpytEmail(false);
-						}
-
-						setEmail(e.target.value);
-					}}
-				/>
-				<TextField
-					error={emptyAdress}
-					id='outlined-name'
-					label='Endereço'
-					value={adress}
-					onChange={e => {
-						if (adress) {
-							setEmpytAdress(false);
-						}
-
-						setAdress(e.target.value);
-					}}
-				/>
-				<LocalizationProvider dateAdapter={AdapterDayjs}>
-					<DesktopDatePicker
-						label='Date desktop'
-						inputFormat='DD/MM/YYYY'
-						value={value}
+				<div style={{color: '#1976d2', textAlign: 'center'}}>
+					<h1 style={{fontSize: 40}}>CADASTRO DE PACIENTES</h1>
+				</div>
+				<div style={{marginTop: 40}}>
+					<TextField
+						error={emptyName}
+						id='outlined-name'
+						label='Name'
+						value={name}
 						onChange={e => {
-							// eslint-disable-next-line no-negated-condition
-							if (!e) {
-								setBirthDate(undefined);
-							} else {
-								handleChange(e);
+							if (name) {
+								setEmpytName(false);
 							}
+
+							setName(e.target.value);
 						}}
-						renderInput={params => <TextField {...params} />}
 					/>
-				</LocalizationProvider>
-			</div>
-			<div style={{height: 350, width: 975, marginTop: 30}}>
-				<DataGrid rows={rows} columns={columns} onRowClick={handleRowClick} />
-				<Stack direction='row' justifyContent='flex-end' alignItems='center' spacing={2}>
-					<Button variant='contained' size='large' onClick={create}> Cadastrar </Button>
-					<Button variant='contained' disabled={isDisabled} size='large' onClick={update}> Editar </Button>
-					<Button variant='contained' disabled={isDisabled} size='large' onClick={deleteRow}type='submit' > Deletar </Button >
-				</Stack>
-			</div>
+					<TextField
+						error={emptyEmail}
+						id='outlined-name'
+						label='Email'
+						value={email}
+						onChange={e => {
+							if (email) {
+								setEmpytEmail(false);
+							}
+
+							setEmail(e.target.value);
+						}}
+					/>
+					<TextField
+						error={emptyAdress}
+						id='outlined-name'
+						label='Endereço'
+						value={adress}
+						onChange={e => {
+							if (adress) {
+								setEmpytAdress(false);
+							}
+
+							setAdress(e.target.value);
+						}}
+					/>
+					<LocalizationProvider dateAdapter={AdapterDayjs}>
+						<DesktopDatePicker
+							label='Date desktop'
+							inputFormat='DD/MM/YYYY'
+							value={value}
+							onChange={e => {
+							// eslint-disable-next-line no-negated-condition
+								if (!e) {
+									setBirthDate(undefined);
+								} else {
+									handleChange(e);
+								}
+							}}
+							renderInput={params => <TextField {...params} />}
+						/>
+					</LocalizationProvider>
+				</div>
+				<div style={{height: 350, width: 975, marginTop: 30}}>
+					<DataGrid rows={rows} columns={columns} onRowClick={handleRowClick} />
+					<Stack direction='row' justifyContent='center' alignItems='center' spacing={2}>
+						<Button variant='contained' size='large' onClick={create}> Cadastrar </Button>
+						<Button variant='contained' disabled={isDisabled} size='large' onClick={update}> Editar </Button>
+						<Button variant='contained' disabled={isDisabled} size='large' onClick={deleteRow}type='submit' > Deletar </Button >
+					</Stack>
+				</div>
+			</Paper>
 		</Container>
+
 	);
 }
 
